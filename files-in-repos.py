@@ -6,15 +6,8 @@
 # MAGIC - Include small data files in a repo. This can be useful for development and unit testing. The maximum size for a data file in a repo is 100 MB. Databricks Repos provides an editor for small files (< 10 MB).
 # MAGIC 
 # MAGIC ## How to use this notebook
-# MAGIC To use this notebook, clone these repos ([AWS](https://docs.databricks.com/repos.html#clone-a-remote-git-repository)|[Azure](https://docs.microsoft.com/azure/databricks/repos#clone-a-remote-git-repository)|[GCP](https://docs.gcp.databricks.com/repos.html#clone-a-remote-git-repository)) into your workspace: 
+# MAGIC To use this notebook, clone this repo ([AWS](https://docs.databricks.com/repos.html#clone-a-remote-git-repository)|[Azure](https://docs.microsoft.com/azure/databricks/repos#clone-a-remote-git-repository)|[GCP](https://docs.gcp.databricks.com/repos.html#clone-a-remote-git-repository)) into your workspace: 
 # MAGIC - https://github.com/databricks/files_in_repos
-# MAGIC - https://github.com/databricks/supplemental-files
-
-# COMMAND ----------
-
-# MAGIC %md This diagram shows the structure of the repo used in this notebook.
-# MAGIC 
-# MAGIC <img src="https://docs.databricks.com/_static/images/repos/repo-structure.png"/>
 
 # COMMAND ----------
 
@@ -39,25 +32,23 @@ cube_root(8)
 
 # COMMAND ----------
 
-# MAGIC %md To import modules from other repositories, add them to the path.  
-# MAGIC Before running the command below, replace `<username>` with your Databricks user name.
+# MAGIC %md To import modules from other repositories, add them to the Python path.  
+# MAGIC For example, if you have a repo named `supplemental_files` with a Python module `lib.py`, you can import it as shown in the next cell.
 
 # COMMAND ----------
 
 import sys
 import os
 
-# In the commands below, replace <username> with your Databricks user name.
-sys.path.append(os.path.abspath('/Workspace/Repos/<username>/supplemental-files'))
+# In the command below, replace <username> with your Databricks user name.
+sys.path.append(os.path.abspath('/Workspace/Repos/<username>/supplemental_files'))
+
+# You can now import Python modules from the supplemental_files repo.
+# import lib
 
 # COMMAND ----------
 
-from areas import circle
-circle(5)
-
-# COMMAND ----------
-
-# MAGIC %md ### Automatic reload
+# MAGIC %md ## Automatic reload
 # MAGIC 
 # MAGIC Suppose you edited `sample.py` to add a function `rectangle` to calculate the area of a rectangle. You can run the commands below to automatically reload the module.
 
