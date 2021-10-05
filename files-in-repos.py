@@ -43,7 +43,7 @@ import sys
 import os
 
 # In the commands below, replace <username> with your Databricks user name.
-sys.path.append(os.path.abspath('/Workspace/Repos/<user folder or top level folder>/repos-staging/path-example'))
+sys.path.append(os.path.abspath('/Workspace/Repos/<user folder or top level folder>/files_in_repos/path-example'))
 sys.path.append(os.path.abspath('/Workspace/Repos/<user folder or top level folder>/supplemental-files'))
 
 # COMMAND ----------
