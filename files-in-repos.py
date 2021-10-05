@@ -146,9 +146,5 @@ display(df)
 
 # COMMAND ----------
 
-# MAGIC %md ### Read files with bash
-
-# COMMAND ----------
-
 # MAGIC %md ## Limitations
 # MAGIC You cannot write to a data file from a notebook.
