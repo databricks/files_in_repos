@@ -4,8 +4,3 @@ Copyright (2021) Databricks, Inc.
 
 
 This Software includes software developed at Databricks (https://www.databricks.com/) and its use is subject to the included LICENSE file.
-
-Additionally, this Software contains code from the following open source projects:
-
-Apache Spark(https://spark.apache.org) - https://opensource.org/licenses/Apache-2.0
-Delta.io(https://delta.io) - https://opensource.org/licenses/Apache-2.0
