@@ -7,7 +7,7 @@
 # MAGIC 
 # MAGIC ## How to use this notebook
 # MAGIC To use this notebook, clone these repos ([AWS](https://docs.databricks.com/repos.html#clone-a-remote-git-repository)|[Azure](https://docs.microsoft.com/azure/databricks/repos#clone-a-remote-git-repository)|[GCP](https://docs.gcp.databricks.com/repos.html#clone-a-remote-git-repository)) into your workspace: 
-# MAGIC - https://github.com/andreakress/files_in_repos
+# MAGIC - https://github.com/databricks/files_in_repos
 # MAGIC - https://github.com/databricks/supplemental-files
 
 # COMMAND ----------
@@ -19,7 +19,7 @@
 # COMMAND ----------
 
 # MAGIC %md ## Work with Python modules 
-# MAGIC The current working directory (`/Workspace/Repos/<user folder or top level folder>/<repo_name>`) is automatically included in the Python path. You can directly import any module in the current directory.
+# MAGIC The current working directory (`/Workspace/Repos/<username>/<repo_name>`) is automatically included in the Python path. You can import any module in the current directory or subdirectories.
 
 # COMMAND ----------
 
@@ -34,6 +34,11 @@ n_to_mth(3, 4)
 
 # COMMAND ----------
 
+from utils.sample2 import cube_root
+cube_root(8)
+
+# COMMAND ----------
+
 # MAGIC %md To import modules from other repositories, add them to the path.  
 # MAGIC Before running the command below, replace `<username>` with your Databricks user name.
 
@@ -43,22 +48,18 @@ import sys
 import os
 
 # In the commands below, replace <username> with your Databricks user name.
-sys.path.append(os.path.abspath('/Workspace/Repos/<user folder or top level folder>/files_in_repos/path-example'))
-sys.path.append(os.path.abspath('/Workspace/Repos/<user folder or top level folder>/supplemental-files'))
+sys.path.append(os.path.abspath('/Workspace/Repos/<username>/supplemental-files'))
 
 # COMMAND ----------
 
-from sample2 import cube_root
-import areas
-
-cube_root(8)
-areas.circle(5)
+from areas import circle
+circle(5)
 
 # COMMAND ----------
 
 # MAGIC %md ### Automatic reload
 # MAGIC 
-# MAGIC Suppose you edited `areas` to add a function `rectangle` to calculate the area of a rectangle. You can run the commands below to automatically reload the module.
+# MAGIC Suppose you edited `sample.py` to add a function `rectangle` to calculate the area of a rectangle. You can run the commands below to automatically reload the module.
 
 # COMMAND ----------
 
@@ -67,12 +68,13 @@ areas.circle(5)
 
 # COMMAND ----------
 
-# For this command to work, you must edit the file `areas` and add this function:
+# For this command to work, you must edit the file `sample.py` and add this function:
 # def rectangle(a, b):
 #    return a * b
 
-# Then, execute the cell above and uncomment and run the line below.
-# areas.rectangle(5, 4)
+# Then, execute this cell.
+from sample import rectangle
+rectangle(5, 4)
 
 # COMMAND ----------
 
@@ -147,4 +149,4 @@ display(df)
 # COMMAND ----------
 
 # MAGIC %md ## Limitations
-# MAGIC You cannot write to a data file from a notebook.
+# MAGIC You cannot programmatically write to a file.
