@@ -32,22 +32,6 @@ cube_root(8)
 
 # COMMAND ----------
 
-# MAGIC %md To import modules from other repositories, add them to the Python path.  
-# MAGIC For example, if you have a repo named `supplemental_files` with a Python module `lib.py`, you can import it as shown in the next cell.
-
-# COMMAND ----------
-
-import sys
-import os
-
-# In the command below, replace <username> with your Databricks user name.
-sys.path.append(os.path.abspath('/Workspace/Repos/<username>/supplemental_files'))
-
-# You can now import Python modules from the supplemental_files repo.
-# import lib
-
-# COMMAND ----------
-
 # MAGIC %md ## Automatic reload
 # MAGIC 
 # MAGIC Suppose you edited `sample.py` to add a function `rectangle` to calculate the area of a rectangle. You can run the commands below to automatically reload the module.
@@ -114,19 +98,6 @@ display(df)
 
 # COMMAND ----------
 
-# MAGIC %md ### Load file with Koalas
-# MAGIC Koalas requires the absolute file path.
-
-# COMMAND ----------
-
-import os
-import databricks.koalas as ks
-
-df= ks.read_csv(f"file:{os.getcwd()}/data/winequality-red.csv") # "file:" prefix and absolute file path are required for Koalas
-display(df)
-
-# COMMAND ----------
-
 # MAGIC %md ### Load file with PySpark
 # MAGIC PySpark requires the absolute file path.
 
@@ -134,10 +105,18 @@ display(df)
 
 import os
 
-df=spark.read.csv(f"file:{os.getcwd()}/data/winequality-red.csv", header=True) # "file:" prefix and absolute file path are required for PySpark
-display(df)
+df_spark=spark.read.csv(f"file:{os.getcwd()}/data/winequality-red.csv", header=True) # "file:" prefix and absolute file path are required for PySpark
+display(df_spark)
 
 # COMMAND ----------
 
 # MAGIC %md ## Limitations
 # MAGIC You cannot programmatically write to a file.
+
+# COMMAND ----------
+
+df.to_csv("data/wine_quality_red_2.csv")
+
+# COMMAND ----------
+
+
