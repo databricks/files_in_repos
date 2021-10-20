@@ -11,7 +11,7 @@
 # MAGIC 
 # MAGIC 
 # MAGIC ## Requirements
-# MAGIC - Needs a cluster with DBR version 8.4 or above 
+# MAGIC - Databricks Runtime 8.4 or above.
 
 # COMMAND ----------
 
