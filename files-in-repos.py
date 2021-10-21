@@ -8,6 +8,10 @@
 # MAGIC ## How to use this notebook
 # MAGIC To use this notebook, clone this repo ([AWS](https://docs.databricks.com/repos.html#clone-a-remote-git-repository)|[Azure](https://docs.microsoft.com/azure/databricks/repos#clone-a-remote-git-repository)|[GCP](https://docs.gcp.databricks.com/repos.html#clone-a-remote-git-repository)) into your workspace: 
 # MAGIC - https://github.com/databricks/files_in_repos
+# MAGIC 
+# MAGIC 
+# MAGIC ## Requirements
+# MAGIC - Databricks Runtime 8.4 or above.
 
 # COMMAND ----------
 
