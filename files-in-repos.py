@@ -54,6 +54,10 @@ sys.path.append(os.path.abspath('/Workspace/Repos/<username>/supplemental_files'
 
 print('this is my new task')
 
+from utils.my_func_file import my_func 
+
+my_func()
+
 # COMMAND ----------
 
 
