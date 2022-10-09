@@ -130,7 +130,7 @@ display(df)
 import os
 import pyspark.pandas as ps
 
-# If you use pyarrow>=2.0.0, make sure to set the following environment variable for your cluster configuration
+# If you use pyarrow>=2.0.0, make sure to set the following environment variable in your cluster configuration
 # PYARROW_IGNORE_TIMEZONE=1
 
 df = ps.read_csv(f"file:{os.getcwd()}/data/winequality-red.csv") # "file:" prefix and absolute file path are required for Koalas
