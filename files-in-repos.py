@@ -12,6 +12,9 @@
 # MAGIC 
 # MAGIC ## Requirements
 # MAGIC - Databricks Runtime 8.4 or above.
+# MAGIC - **Note:** Docker Container Services (DCS) does not work with Databricks Repos by default.  
+# MAGIC However, you can use a custom init script to configure DCS for Databricks Repos. 
+# MAGIC Please refer to this [Knowledge Base article](https://kb.databricks.com/en_US/libraries/use-databricks-repos-with-docker-container-services)
 
 # COMMAND ----------
 
@@ -81,7 +84,7 @@ pip install -r requirements.txt
 
 # COMMAND ----------
 
-# MAGIC %md  ## Work with small data files
+# MAGIC %md ## Work with small data files
 # MAGIC You can include small data files in a repo, which is useful for development and unit testing. The maximum size for a data file in a repo is 100 MB. Databricks Repos provides an editor for small files (< 10 MB).
 # MAGIC You can read in data files using Python, shell commands, pandas, Koalas, or PySpark.
 
@@ -113,20 +116,24 @@ with open('data/winequality-red.csv', 'r') as file:
 
 import pandas as pd
 
-df= pd.read_csv("data/winequality-red.csv")
+df = pd.read_csv("data/winequality-red.csv")
 display(df)
 
 # COMMAND ----------
 
-# MAGIC %md ### Load file with Koalas
-# MAGIC Koalas requires the absolute file path.
+# MAGIC %md ### Load file with Pandas API on Spark (formerly known as Koalas)
+# MAGIC The Pandas API on Spark requires the absolute file path.  
+# MAGIC https://spark.apache.org/docs/latest/api/python/user_guide/pandas_on_spark/index.html
 
 # COMMAND ----------
 
 import os
-import databricks.koalas as ks
+import pyspark.pandas as ps
 
-df= ks.read_csv(f"file:{os.getcwd()}/data/winequality-red.csv") # "file:" prefix and absolute file path are required for Koalas
+# If you use pyarrow>=2.0.0, make sure to set the following environment variable for your cluster configuration
+# PYARROW_IGNORE_TIMEZONE=1
+
+df = ps.read_csv(f"file:{os.getcwd()}/data/winequality-red.csv") # "file:" prefix and absolute file path are required for Koalas
 display(df)
 
 # COMMAND ----------
@@ -138,7 +145,7 @@ display(df)
 
 import os
 
-df=spark.read.csv(f"file:{os.getcwd()}/data/winequality-red.csv", header=True) # "file:" prefix and absolute file path are required for PySpark
+df = spark.read.csv(f"file:{os.getcwd()}/data/winequality-red.csv", header=True) # "file:" prefix and absolute file path are required for PySpark
 display(df)
 
 # COMMAND ----------
