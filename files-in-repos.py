@@ -84,8 +84,7 @@ pip install -r requirements.txt
 
 # COMMAND ----------
 
-# MAGIC %md  
-# MAGIC ## Work with small data files
+# MAGIC %md ## Work with small data files
 # MAGIC You can include small data files in a repo, which is useful for development and unit testing. The maximum size for a data file in a repo is 100 MB. Databricks Repos provides an editor for small files (< 10 MB).
 # MAGIC You can read in data files using Python, shell commands, pandas, Koalas, or PySpark.
 
