@@ -6,7 +6,7 @@ current_working_dir
 
 # COMMAND ----------
 
-df = spark.read.format("csv").option("header", "true").option("delimiter", ";").load(f"file://{current_working_dir}/sample.csv")
+df = spark.read.format("csv").option("header", "true").option("delimiter", ";").load(f"file:///Workspace/Repos/pawarit.laosunthara@databricks.com/files_in_repos/sample.csv")
 display(df)
 
 # COMMAND ----------
