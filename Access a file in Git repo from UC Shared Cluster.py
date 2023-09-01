@@ -6,11 +6,6 @@ current_working_dir
 
 # COMMAND ----------
 
-df = spark.read.format("csv").option("header", "true").option("delimiter", ";").load(f"file:///Workspace/Repos/pawarit.laosunthara@databricks.com/files_in_repos/sample.csv")
-display(df)
-
-# COMMAND ----------
-
 import pandas as pd
 
 # example
@@ -33,3 +28,7 @@ display(spark_df)
 
 with open("./LICENSE.txt", "r") as f:
   print(f.read()) # another example: read some arbitrary text
+
+# COMMAND ----------
+
+
